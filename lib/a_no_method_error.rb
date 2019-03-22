@@ -1,0 +1,3 @@
+sentence = nil
+
+sentence.length

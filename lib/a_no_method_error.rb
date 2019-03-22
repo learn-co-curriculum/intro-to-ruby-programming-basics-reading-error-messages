@@ -1,3 +1,3 @@
-sentence = nil
+sentence = "hello world!"
 
 sentence.length

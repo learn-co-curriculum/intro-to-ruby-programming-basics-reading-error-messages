@@ -16,12 +16,18 @@ how to approach resolving them. The errors you are tasked with resolving are
 present in the four files within the `lib` folder. As you read and resolve these
 errors, run `learn` to confirm your success.
 
+## Troubleshooting
+
+If at any point, you are having trouble with this lesson or are unable to pass
+all the tests, watch the [video][video] linked in the Resources section at the.
+end of this readme.
+
 ## Reading Error Messages
 
 To start, we're going to run a Ruby file with our first error. In your terminal,
 run `ruby lib/a_name_error.rb`. You should see something close to the following:
 
-```
+```text
 Traceback (most recent call last):
 lib/a_name_error.rb:3:in `<main>': undefined local variable or method `hello_world' for main:Object (NameError)
 ```
@@ -32,7 +38,7 @@ Error messages have 3 parts that we can use to help identify and fix the issue.
 
 The first part of the error is the location, where the error occurred:
 
-```
+```text
 lib/a_name_error.rb:3:in `<main>':
 ```
 
@@ -47,7 +53,7 @@ work on implementing a fix for this error.
 
 The second part of the error is the description, the _cause_ of the error:
 
-```
+```text
 undefined local variable or method `hello_world' for main:Object
 ```
 
@@ -59,7 +65,7 @@ undefined.
 
 At the end of the error message, we see the error type:
 
-```
+```text
 (NameError)
 ```
 
@@ -76,7 +82,7 @@ Ruby interpreter encounters a word it doesn't recognize, it assumes that word is
 the name of a variable or a method. If that word was never defined as either a
 variable or a method, it will result in a name error.
 
-```
+```text
 lib/a_name_error.rb:3:in `<main>': undefined local variable or method `hello_world' for main:Object (NameError)
 ```
 
@@ -89,7 +95,7 @@ Fix the name error present in `lib/a_name_error.rb` before continuing. Run
 `learn` to confirm you were successful. If you've solved the error, you should
 see the following at the top of your test results:
 
-```
+```text
 Error tests
   NameError
     raises a NameError when encountering undefined barewords
@@ -106,7 +112,7 @@ syntax. Something is missing, out of place, or extra in our code.
 
 Run `ruby lib/a_syntax_error.erb` in your terminal. You'll see the following:
 
-```
+```text
 lib/a_syntax_error.rb:3: syntax error, unexpected end-of-input
 ```
 
@@ -117,7 +123,7 @@ Fix the name error present in `lib/a_syntax_error.rb` before continuing. Run
 `learn` to confirm you were successful. If you've solved the error, you should
 now see the following at the top of your test results:
 
-```
+```text
 Error tests
   NameError
     raises a NameError when encountering undefined barewords
@@ -141,7 +147,7 @@ integer, Ruby will complain:
 
 ...produces the following error:
 
-```
+```text
 String can't be coerced into Integer (TypeError)
 ```
 
@@ -149,7 +155,7 @@ Running `ruby lib/a_type_error.rb` produces a similar error. Fix this error
 before continuing. Run `learn` to confirm you were successful. If you've solved
 the error, you should now see the following at the top of your test results:
 
-```
+```text
 Error tests
   NameError
     raises a NameError when encountering undefined barewords
@@ -170,14 +176,14 @@ Division errors are caused when a given number is divided by 0.
 In `lib/a_division_by_zero_error.rb`, there are _two_ division errors. Running
 `ruby lib/a_division_by_zero_error.rb` produces:
 
-```
+```text
 lib/a_division_by_zero_error.rb:3:in `/': divided by 0 (ZeroDivisionError)
 ```
 
 Fix the two division errors to pass the final test. Run `learn` to confirm your
-success. You should see 4 examples, 0 failures.
+success. You should see 5 examples, 1 failure.
 
-```
+```text
 Error tests
   NameError
     raises a NameError when encountering undefined barewords
@@ -187,17 +193,73 @@ Error tests
     raises a TypeError for objects of the wrong type
   ZeroDivisionError
     raises a ZeroDivisionError for dividing by zero
-
-Finished in 0.01457 seconds (files took 0.2058 seconds to load)
-4 examples, 0 failures
+  NoMethodError
+    raises a NoMethodError for trying to use a built in method on a nil value (FAILED - 1)
 ```
 
-Run `learn submit` to submit your work before continuing to the next lesson.
+One more to go!
 
-## Troubleshooting
+## No Method Errors
 
-If at any point, you are having trouble with this lesson or are unable to pass
-all the tests, watch the [video][video] linked in the Resources section below.
+No method errors will often occur when you have a variable set to `nil`
+(essentially, nothing or no value), without realizing it. Most attempts to use a
+method on something that equals `nil` will result in `NoMethodError`. This
+is because you are asking an object, `nil` in this case, to do something it does
+not know how to do. In other words, you are calling a method that is not defined
+for that particular object.
+
+For example:
+
+```ruby
+missing_value = nil
+
+missing_value.length
+```
+
+This will produce the following error:
+
+```text
+undefined method `length' for nil:NilClass (NoMethodError)
+```
+
+Running `ruby lib/a_no_method_error.rb` will produce a similar error. Often,
+the solution to this error is to make sure variables are properly assigned. If
+we're expecting `missing_value` to work with the `length` method, we need to
+make sure `missing_value` is a data type that _has_ `length` as a built in
+method:
+
+```ruby
+missing_value = "Not nil anymore! Now I'm a string!"
+
+missing_value.length
+# => 34
+```
+
+Replacing `nil` with a string fixes the error. The statement
+`missing_value.length` now returns the length of the string.
+
+Fix the no method error present in `lib/a_no_method_error.rb`. Run `learn` to
+confirm your success. You should see 5 examples, 0 failures.
+
+```text
+Error tests
+  NameError
+    raises a NameError when encountering undefined barewords
+  SyntaxError
+    raises a SyntaxError for nonsensical code
+  TypeError
+    raises a TypeError for objects of the wrong type
+  ZeroDivisionError
+    raises a ZeroDivisionError for dividing by zero
+  NoMethodError
+    raises a NoMethodError for trying to use a built in method on a nil value
+
+Finished in 0.01384 seconds (files took 0.28321 seconds to load)
+5 examples, 0 failures
+```
+
+All finished! Run `learn submit` to submit your work before continuing to the
+next lesson.
 
 ## Conclusion
 

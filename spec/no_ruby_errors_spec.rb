@@ -31,4 +31,12 @@ describe "Error tests" do
       }.to_not raise_error
     end
   end
+
+  context 'NoMethodError' do
+    it 'raises a NoMethodError for trying to use a built in method on a nil value' do
+      expect{
+        load './lib/a_no_method_error.rb'
+      }.to_not raise_error
+    end
+  end
 end

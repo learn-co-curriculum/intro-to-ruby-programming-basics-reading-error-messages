@@ -2,12 +2,8 @@
 
 ## Learning Goals
 
-- Read the three different parts of an error message.
-- Identify four error types- name errors, syntax errors, type errors, and
-  division errors- and fix them
-- Describe a test suite, where it's found in a lab, and its purpose
-- Use the `learn` command in terminal to run the tests and read errors for this
-  lab.
+- Identify how to read error messages
+- Identify error types
 
 ## Introduction
 
@@ -20,9 +16,9 @@ errors, run `learn` to confirm your success.
 
 If at any point, you are having trouble with this lesson or are unable to pass
 all the tests, watch the [video][video] linked in the Resources section at the.
-end of this readme.
+end of this readme
 
-## Reading Error Messages
+## Identify How to Read Error Messages
 
 To start, we're going to run a Ruby file with our first error. In your terminal,
 run `ruby lib/a_name_error.rb`. You should see something close to the following:
@@ -34,7 +30,7 @@ lib/a_name_error.rb:3:in `<main>': undefined local variable or method `hello_wor
 
 Error messages have 3 parts that we can use to help identify and fix the issue.
 
-#### Error Location
+### Error Location
 
 The first part of the error is the location, where the error occurred:
 
@@ -49,7 +45,7 @@ lib/a_name_error.rb:3:in `<main>':
 With the file and the exact line of code, we now know where to go in order to
 work on implementing a fix for this error.
 
-#### Error Description
+### Error Description
 
 The second part of the error is the description, the _cause_ of the error:
 
@@ -61,7 +57,7 @@ The interpreter does the best job it can to tell you what it thinks went wrong.
 In this case, it is saying it encountered `hello_world`, which is currently
 undefined.
 
-#### Error Type
+### Error Type
 
 At the end of the error message, we see the error type:
 
@@ -73,7 +69,7 @@ This is a [Ruby Error Type](http://www.ruby-doc.org/core-2.2.0/Exception.html).
 This, combined with the description, can often give us a clearer idea of what
 went wrong.
 
-## Four Common Error Types
+## Identify Error Types
 
 ### Name Errors
 
@@ -197,9 +193,7 @@ Error tests
     raises a NoMethodError for trying to use a built in method on a nil value (FAILED - 1)
 ```
 
-One more to go!
-
-## No Method Errors
+### No Method Errors
 
 No method errors will often occur when you have a variable set to `nil`
 (essentially, nothing or no value), without realizing it. Most attempts to use a
